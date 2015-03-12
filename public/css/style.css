@@ -1,0 +1,145 @@
+body {
+  padding: 50px;
+  font: 14px "fira-sans", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.transit {
+  /* fix flickering on Chrome and Safari */
+  -webkit-transform: translate3d(0, 0, 0);
+     -moz-transform: translate3d(0, 0, 0);
+      -ms-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+
+ /* set transition for all properties */
+  -webkit-transition: all 500ms cubic-bezier(0.075, 0.820, 0.165, 1.000);
+   -moz-transition: all 500ms cubic-bezier(0.075, 0.820, 0.165, 1.000);
+     -o-transition: all 500ms cubic-bezier(0.075, 0.820, 0.165, 1.000);
+        transition: all 500ms cubic-bezier(0.075, 0.820, 0.165, 1.000); /* easeOutCirc */
+
+}
+
+.section:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.fpo-only {
+  display: none;
+}
+
+/* overlay Styles */
+.opaque {
+  background: #333;
+  opacity: .4;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: -100px;
+  left: 0;
+}
+.modal {
+  position: absolute;
+  top: 15%;
+  right: 1%;
+  left: 1%;
+  width: 98%;
+  min-width: 780px;
+  max-width: 870px;
+  height: auto;
+  background: #fff;
+  padding: 20px;
+  margin: 0 auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.modal-header {
+  position: relative;
+}
+
+
+.modal-close {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  cursor: pointer;
+  float:right;
+}
+.modal-close:before,
+.modal-close:after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+}
+.modal-close:before {
+  border-left: 1px solid #333;
+  left: 14px;
+  top: -15px;
+    -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+.modal-close:after {
+  border-right: 1px solid #333;
+  left: -15px;
+  top: -15px;
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+  body {
+    font-size: 3em;
+  }
+  .modal {
+    top: 0;
+    right: 0;
+    left: 0;
+    max-width: 100%;
+    min-width: 100%;
+  }
+  .modal-close,
+  .modal-close:before,
+  .modal-close:after
+   {
+    width:80px;
+    height: 80px;
+  }
+  .modal-close:before {
+    left: 17px;
+    border-left: 3px solid #333;
+  }
+  .modal-close:after {
+    left: -40px;
+    border-right: 3px solid #333;
+  }
+}
+
+@media only screen
+and (min-width : 320px)
+and (max-width : 870px) {
+    .modal {
+    top: 0;
+    right: 0;
+    left: 0;
+    max-width: 100%;
+    min-width: 100%;
+  }
+}
