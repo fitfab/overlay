@@ -1,73 +1,75 @@
-  /* SmartOverlay Creates Constructor */
-  var SmartOverlay = function(map) {
-    var self = this,
-        $win = $(window);
-    this.$el = $('<div class="modal transit"><div class="modal-header section"><div class="modal-close"></div></div><div class="modal-content"></div></div>');
+/* SmartOverlay Creates Constructor */
+var SmartOverlay = function(map) {
+  var $win = $(window);
+  this.defaults = { width: 780, height: 'auto', background: 'white'};
+  this.$bg = $( '<div class="opaque transit"></div>' ).appendTo('body');
+  this.$el = $('<div class="modal transit"><b class="modal-close"></b></div>')
+              .append('<div class="modal-content"></div>');
 
-    $win.on('click', function(e){
-      // if an overlay triger was clicked
-      if ( $(e.target).hasClass('overlayTrigger') ){
-        var options = $(e.target).data("dialog");
-        self.open(map[options]);
-      }
-    });
+  // Listen to any call to the overlay
+  $win.on('click', function(e){
+    if ( $(e.target).hasClass('overlayTrigger') ){
+      var options = $(e.target).data("dialog");
+      this.open(map[options]);
+    }
+  }.bind(this));
+
+  // Listen to the "modal:close" event
+  $win.on('modal:close', function(){
+    this.closeModal();
+  }.bind(this));
+
+  // X icon triggers "modal:close" event
+  this.$el.on('click', '.modal-close', function(){
+    $(this).trigger('modal:close');
+  });
+
+ // clicking gray background triggers 'modal:close' event
+  this.$bg.on('click', function(){
+    $(this).trigger('modal:close');
+  });
+
+  this.$el.appendTo('body');
+};
+
+/* SmartOverlay Prototype */
+SmartOverlay.prototype = function(){
+
+  var open = function(options) {
+    var settings = $.extend( {}, this.defaults, options.prop );
+    console.log(settings);
+    // Shows the background
+    this.$bg.addClass('open');
+
+    // Update content
+    this.$el.find('.modal-content').html(options.content);
+    this.$el.addClass('open');
+
+    this.transit(settings);
   };
 
+  var closeModal = function(){
+    this.$el.removeClass('open');
+    this.$bg.removeClass('open');
+  };
 
-  /* SmartOverlay Prototype */
-  SmartOverlay.prototype = function(){
+  // using css3 to do transitions
+  var animate = function( prop ) {
+    var deferred = $.Deferred();
+    this.$el.css(prop);
 
-    var open = function(options) {
-      var self = this;
+    // Listening to transitionend
+    this.$el.on('transitionend webkitTransitionEnd', function(e){
+      deferred.resolve(e);
+    });
+    // return a promise
+    return deferred.promise();
+  };
 
-      // Creates the background
-      this.$bg = $( "<div></div>" )
-        .addClass( "opaque transit" )
-        .on({
-          click: function( event ) {
-            // remove
-            $(this).remove();
-            self.$el.remove();
-          }
-        })
-        .appendTo( "body" );
+  return {
+    'transit': animate,
+    'open': open,
+    'closeModal': closeModal
+  };
 
-      // find and append content
-      this.$el.find('.modal-content').html(options.content);
-      this.$el.appendTo( "body" );
-
-      // Triggers custom event
-      this.$el.on('click', '.modal-close', function(){
-        self.$el.trigger('modal:close');
-        console.log('triggering');
-      });
-      // listening to custom event
-      this.$el.on('modal:close', function(e){
-        self.$bg.remove();
-        self.$el.remove();
-      });
-      if( options && options.prop ) {
-        this.transit(options.prop);
-      }
-    };
-
-    // using css3 to do transitions
-    var animate = function( prop ) {
-
-      var deferred = $.Deferred();
-      this.$el.css(prop);
-
-      // Listening to transitionend
-      this.$el.on('transitionend webkitTransitionEnd', function(e){
-        deferred.resolve(e);
-      });
-      // return a promise
-      return deferred.promise();
-    };
-
-    return {
-      'transit': animate,
-      'open': open
-    };
-
-  }();
+}();

@@ -1,25 +1,36 @@
 body {
   padding: 50px;
   font: 14px "fira-sans", Helvetica, Arial, sans-serif;
+  background: #fff;
 }
-
+h1, h2,h3,h4,h5,h6 { margin-top: 0; color: #FF5700;}
 a {
   color: #00B7FF;
 }
+.split {
+  display: inline-block;
+  width: 50%;
+  float:left;
+}
+.hero {
+  font-size: 44px;
+  font-weight: 100;
+}
 
+/* overlay Styles */
 .transit {
-  /* fix flickering on Chrome and Safari */
+
+  /* Fix flickering on Chrome and Safari */
   -webkit-transform: translate3d(0, 0, 0);
      -moz-transform: translate3d(0, 0, 0);
       -ms-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
 
- /* set transition for all properties */
+ /* Set transition for all properties */
   -webkit-transition: all 500ms cubic-bezier(0.075, 0.820, 0.165, 1.000);
    -moz-transition: all 500ms cubic-bezier(0.075, 0.820, 0.165, 1.000);
      -o-transition: all 500ms cubic-bezier(0.075, 0.820, 0.165, 1.000);
         transition: all 500ms cubic-bezier(0.075, 0.820, 0.165, 1.000); /* easeOutCirc */
-
 }
 
 .section:after {
@@ -32,24 +43,29 @@ a {
   display: none;
 }
 
-/* overlay Styles */
 .opaque {
   background: #333;
-  opacity: .4;
+  opacity: 0;
   position: fixed;
   top: 0;
   right: 0;
   bottom: -100px;
   left: 0;
+  display: none;
 }
+.opaque.open {
+  opacity: .6;
+  display: block;
+}
+
 .modal {
   position: absolute;
   top: 15%;
   right: 1%;
   left: 1%;
-  width: 98%;
+  /*width: 98%;
   min-width: 780px;
-  max-width: 870px;
+  max-width: 870px;*/
   height: auto;
   background: #fff;
   padding: 20px;
@@ -57,11 +73,17 @@ a {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  display: none;
+  overflow: hidden;
 }
-.modal-header {
-  position: relative;
+.modal.open {
+  display: block;
 }
 
+.modal-header {
+  position: relative;
+  margin: 0;
+}
 
 .modal-close {
   width: 40px;
@@ -100,7 +122,6 @@ a {
 }
 
 
-
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen
 and (min-device-width : 320px)
@@ -131,7 +152,7 @@ and (max-device-width : 480px) {
     border-right: 3px solid #333;
   }
 }
-
+/* Desktop */
 @media only screen
 and (min-width : 320px)
 and (max-width : 870px) {

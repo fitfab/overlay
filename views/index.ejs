@@ -8,26 +8,58 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <a href="#overlay" class="overlayTrigger" data-dialog="openDisclaimer">Disclaimer</a> <a href="#pdp" class="overlayTrigger" data-dialog="openPrivacy">PDP</a>
+    <p>by Miguel Julio</p>
+
+    <!-- The overlay can be setup via data attribute -->
+    <a href="#overlay" class="overlayTrigger" data-dialog="openDisclaimer">Disclaimer</a>
+    <a href="#pdp" class="overlayTrigger" data-dialog="openPrivacy">PDP</a>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+    proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+
+    <!-- The overlay can be setup via data attribute -->
+    <a href="#pdp" class="overlayTrigger" data-dialog="readArticle">Read full article ></a>
 
     <!-- For Placement Only (hidden content) -->
-    <div id="fpo-only" class="fpo-only">
-      <div id="disclaimer" class="pdp">
+    <div class="fpo-only">
+    <!-- PDP -->
+      <div id="pdp">
         <h2>Hot Shoes!! Now for $16.99</h2>
-        <img src="http://image.s5a.com/is/image/saks/0452490858287_396x528.jpg">
-        <p>Viral health goth Thundercats, stumptown XOXO typewriter mustache Williamsburg artisan flexitarian actually keffiyeh.  Semiotics pour-over meditation, seitan High Life chambray street art vinyl.  Pug Pinterest next level master cleanse kogi small batch, cliche migas 8-bit.  Before they sold out plaid banh mi retro McSweeney's.  Gluten-free craft beer banh mi, irony blog roof party PBR pour-over migas squid hashtag.  Paleo XOXO bespoke, Godard kogi polaroid taxidermy retro church-key Carles.  Listicle cornhole bespoke, master cleanse seitan tousled slow-carb.</p>
-        <p>Deep v YOLO pickled mustache, hella asymmetrical cornhole.  Paleo shabby chic pickled swag.  Fashion axe trust fund small batch pour-over.  Wolf pickled fashion axe lomo seitan.  Food truck flannel single-origin coffee meggings PBR, narwhal organic ethical sustainable squid yr aesthetic.  Tofu post-ironic master cleanse, shabby chic tattooed typewriter yr fixie sriracha.  Sustainable fashion axe twee letterpress, crucifix meditation chia jean shorts tattooed cliche church-key photo booth taxidermy YOLO.</p>
+        <div class="section">
+            <img src="http://image.s5a.com/is/image/saks/0452490858287_396x528.jpg" class="split">
+            <p class="split"><strong>Viral health goth Thundercats</strong>, stumptown XOXO typewriter mustache Williamsburg artisan flexitarian actually keffiyeh.  Semiotics pour-over meditation, seitan High Life chambray street art vinyl.  Pug Pinterest next level master cleanse kogi small batch, cliche migas 8-bit.  Before they sold out plaid banh mi retro McSweeney's.  Gluten-free craft beer banh mi, irony blog roof party PBR pour-over migas squid hashtag.  Paleo XOXO bespoke, Godard kogi polaroid taxidermy retro church-key Carles.  Listicle cornhole bespoke, master cleanse seitan tousled slow-carb.</p>
+
+        </div>
+ 
+        <ul>
+            <li>Ipsum This </li>
+            <li>Ipsum That </li>
+            <li>Ipsum There </li>
+            <li>Ipsum Anywhere </li>
+            <li>Ipsum more of this </li>
+            <li>Ipsum less now </li>
+            <li>Ipsum one more ipsum </li>
+        </ul>
+      </div>
+
+    <!-- PDP -->
+      <div id="one-shoe">
+
         <h2>Shoes</h2>
         <img src="http://image.s5a.com/is/image/saks/0441938898213_A1_204x276.jpg">
-        <p>Cliche mixtape cray fixie asymmetrical, dreamcatcher semiotics 3 wolf moon quinoa.  Tote bag Williamsburg asymmetrical 90's cred skateboard, bespoke gastropub four dollar toast XOXO 8-bit fingerstache beard actually.  Keytar selfies wayfarers, yr Williamsburg 8-bit pork belly Godard lumbersexual Wes Anderson chia brunch typewriter four dollar toast.  Fanny pack tilde fingerstache trust fund flannel yr keytar crucifix.  Austin dreamcatcher before they sold out pork belly American Apparel.  Four dollar toast High Life you probably haven't heard of them dreamcatcher Banksy, sriracha pork belly freegan cornhole PBR.  Vinyl ugh chia sriracha, four dollar toast banh mi Etsy cred jean shorts taxidermy photo booth umami wolf before they sold out gentrify.</p>
-        <p>Flexitarian mlkshk photo booth, kogi next level direct trade  retro.  Shoreditch Carles butcher pour-over keytar flannel.  Pitchfork selfies Schlitz, gentrify quinoa try-hard ennui hella kitsch cronut meh plaid.  VHS iPhone tofu pour-over stumptown.  Disrupt ethical lumbersexual Thundercats artisan.  Mixtape pour-over put a bird on it, irony skateboard YOLO fap flexitarian Portland twee roof party biodiesel photo booth Intelligentsia.  Truffaut kitsch deep v mixtape, literally meggings pickled sartorial.</p>
+        <p>Cliche mixtape cray fixie asymmetrical, dreamcatcher semiotics 3 wolf moon quinoa.  Tote bag Williamsburg asymmetrical 90's cred skateboard, bespoke gastropub four dollar toast XOXO 8-bit fingerstache beard actually.</p>
+
       </div>
+
       <!-- Privacy Policy -->
-      <div class="privacy">
+      <div id="privacy">
         <!-- start slipsum code -->
 
-        <h3>Nullam commodo neque</h3>
+        <h1>Nullam commodo neque</h1>
         Etiam aliquam sem ac velit feugiat elementum. Nunc eu elit velit, nec vestibulum nibh. Curabitur ultrices, diam non ullamcorper blandit, nunc lacus ornare nisi, egestas rutrum magna est id nunc. Pellentesque imperdiet malesuada quam, et rhoncus eros auctor eu. Nullam vehicula metus ac lacus rutrum nec fermentum urna congue. Vestibulum et risus at mi ultricies sagittis quis nec ligula. Suspendisse dignissim dignissim luctus. Duis ac dictum nibh. Etiam id massa magna. Morbi molestie posuere posuere.
 
         <h3>Suspendisse in urna</h3>
@@ -105,18 +137,29 @@
     /* Register overlays that need to be created */
     var overlayMap = overlayMap || {
       openDisclaimer: {
-        prop : {},
-        content : $('#fpo-only').find('.privacy')
+        prop : {width: '960'},
+        content : $('#privacy')
       },
       openPrivacy: {
-        prop : {},
-        content : $('#fpo-only').find('.pdp')
+        prop : {width: '780'},
+        content : $('#pdp')
+      },
+      readArticle : {
+        prop : {width: '500'},
+        content : $('#one-shoe')
       }
     };
 
     /******** App Controller *******/
     $(function(){
-      var pop  = new SmartOverlay(overlayMap);
+      var smartOverlay  = new SmartOverlay(overlayMap);
+      /**
+       * You can also trigger the overlay programatically
+       **/
+      smartOverlay.open({
+        prop: { width: 800, height: 500, background: 'url(/images/fashion.jpg)'}, 
+        content: '<h1 class="hero">Welcome Summer 2015</h1>'
+        });
     });
     </script>
   </body>
