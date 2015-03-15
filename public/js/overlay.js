@@ -2,7 +2,7 @@
 var SmartOverlay = function(map) {
   var $win = $(window);
   this.defaults = { width: 780, height: 'auto', background: 'white'};
-  this.$bg = $( '<div class="opaque transit"></div>' ).appendTo('body');
+  this.$bg = $( '<div class="opaque transit"></div>' ).hide().appendTo('body');
   this.$el = $('<div class="modal transit"><b class="modal-close"></b></div>')
               .append('<div class="modal-content"></div>');
 
@@ -36,10 +36,10 @@ var SmartOverlay = function(map) {
 /* SmartOverlay Prototype */
 SmartOverlay.prototype = {
 
-  open : function( options ) {
+  open : function( options) {
     var settings = $.extend( {}, this.defaults, options.prop );
     // Shows the background
-    this.$bg.addClass('open');
+    this.$bg.show().addClass('open');
 
     // Update content
     this.$el.find('.modal-content').html(options.content);
@@ -50,7 +50,7 @@ SmartOverlay.prototype = {
 
   closeModal : function(){
     this.$el.removeClass('open');
-    this.$bg.removeClass('open');
+    this.$bg.removeClass('open').hide();
   },
 
   // using css3 to do transitions
