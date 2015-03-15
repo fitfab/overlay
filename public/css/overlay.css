@@ -32,30 +32,28 @@
   position: fixed;
   top: 0;
   right: 0;
-  bottom: -100px;
+  bottom: 0;
   left: 0;
-  display: none;
+  opacity: 0;
 }
 .opaque.open {
-  opacity: .6;
-  display: block;
+  opacity: .4;
 }
 
 /* Modal style */
 .modal {
   position: absolute;
-  top: 15%;
+  top: 14%;
   right: 1%;
   left: 1%;
-  height: auto;
   background: #fff;
   padding: 20px;
   margin: 0 auto;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  display: none;
   overflow: hidden;
+  display: none;
 }
 .modal.open {
   display: block;
