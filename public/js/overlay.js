@@ -6,8 +6,9 @@ var SmartOverlay = function(map) {
   this.$el = $('<div class="modal transit"><b class="modal-close"></b></div>')
               .append('<div class="modal-content"></div>');
 
-  // Listen to any call to the overlay
+  // Listen for call to the overlay from a click event
   $win.on('click', function(e){
+    e.preventDefault();
     if ( $(e.target).hasClass('overlayTrigger') ){
       var options = $(e.target).data("dialog");
       this.open(map[options]);
@@ -33,11 +34,10 @@ var SmartOverlay = function(map) {
 };
 
 /* SmartOverlay Prototype */
-SmartOverlay.prototype = function(){
+SmartOverlay.prototype = {
 
-  var open = function(options) {
+  open : function( options ) {
     var settings = $.extend( {}, this.defaults, options.prop );
-    console.log(settings);
     // Shows the background
     this.$bg.addClass('open');
 
@@ -46,15 +46,15 @@ SmartOverlay.prototype = function(){
     this.$el.addClass('open');
 
     this.transit(settings);
-  };
+  },
 
-  var closeModal = function(){
+  closeModal : function(){
     this.$el.removeClass('open');
     this.$bg.removeClass('open');
-  };
+  },
 
   // using css3 to do transitions
-  var animate = function( prop ) {
+  transit : function( prop ) {
     var deferred = $.Deferred();
     this.$el.css(prop);
 
@@ -64,12 +64,5 @@ SmartOverlay.prototype = function(){
     });
     // return a promise
     return deferred.promise();
-  };
-
-  return {
-    'transit': animate,
-    'open': open,
-    'closeModal': closeModal
-  };
-
-}();
+  }
+};

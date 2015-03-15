@@ -3,14 +3,17 @@ body {
   font: 14px "fira-sans", Helvetica, Arial, sans-serif;
   background: #fff;
 }
+
 h1, h2,h3,h4,h5,h6 { margin-top: 0; color: #FF5700;}
 a {
   color: #00B7FF;
 }
+ul { list-style: none; padding: 0;}
 .split {
   display: inline-block;
   width: 50%;
   float:left;
+  margin-left: 0;
 }
 .hero {
   font-size: 44px;
