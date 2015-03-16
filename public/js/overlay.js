@@ -31,9 +31,21 @@ var SmartOverlay = function(map) {
     $(this).trigger('modal:close');
   });
 
+  // Listening to the iframe
   $win.on('message', function(e){
-    console.log(e.originalEvent.data);
-    this.$el.addClass('loaded')
+
+    // Iframe is ready
+    if(e.originalEvent.data === 'iframe:ready'){
+      this.$el.addClass('loaded');
+      return;
+    };
+
+    // Iframe requesting the overlay to be closed
+    if(e.originalEvent.data === 'iframe:close'){
+      this.$el.trigger('modal:close');
+      return;
+    };
+
   }.bind(this));
 
   this.$el.appendTo('body');

@@ -21,11 +21,14 @@
 <script type="text/javascript">
 	$(function(){
 		setTimeout(function(){
-			window.parent.postMessage("loaded", "http://localhost:3000/");
-		}, 3000)
+			window.parent.postMessage("iframe:ready", window.location.origin);
+		}, 1000)
 		$('#signup').on('submit', function(e){
 			e.preventDefault();
-			window.parent.postMessage('saved', "http://localhost:3000/");
+      setTimeout(function(){
+      window.parent.postMessage('iframe:close', window.location.origin);
+      }, 500);
+
 		})
 	})
 </script>

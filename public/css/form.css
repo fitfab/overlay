@@ -3,6 +3,7 @@
 }
 
 .textbox{
+  font: 14px "fira-sans", Helvetica, Arial, sans-serif;
   height:50px;
   width:100%;
   border-radius:10px;
@@ -22,19 +23,22 @@
   height:50px;
   width:100%;
   border-radius:10px;
-  border:rgba(0,0,0,.3) 0px solid;
+  border:rgba(0,0,0,.3) 1px solid;
   box-sizing:border-box;
   padding:10px;
   margin-bottom:30px;
   background:#90c843;
   color:#FFF;
-  font-weight:bold;
-  font-size: 12pt;
+  font: 14px "fira-sans", Helvetica, Arial, sans-serif;
   transition:background .4s;
   cursor:pointer;
 }
 
+.button:focus {
+  outline:none;
+}
+
 .button:hover{
   background:#80b438;
-  
+
 }
