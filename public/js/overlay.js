@@ -1,9 +1,10 @@
 /* SmartOverlay Creates Constructor */
 var SmartOverlay = function(map) {
   var $win = $(window);
-  this.defaults = { width: 780, height: 'auto', background: 'white'};
+  this.$iframe = $('<iframe id="modal-iframe" />');
+  this.defaults = { width: 780, height: 'auto', background: '#fff'};
   this.$bg = $( '<div class="opaque transit"></div>' ).hide().appendTo('body');
-  this.$el = $('<div class="modal transit"><b class="modal-close"></b></div>')
+  this.$el = $('<div class="modal transit"><b class="modal-close"></b><div class=loader></div></div>')
               .append('<div class="modal-content"></div>');
 
   // Listen for call to the overlay from a click event
@@ -30,6 +31,11 @@ var SmartOverlay = function(map) {
     $(this).trigger('modal:close');
   });
 
+  $win.on('message', function(e){
+    console.log(e.originalEvent.data);
+    this.$el.addClass('loaded')
+  }.bind(this));
+
   this.$el.appendTo('body');
 };
 
@@ -41,15 +47,21 @@ SmartOverlay.prototype = {
     // Shows the background
     this.$bg.show().addClass('open');
 
-    // Update content
+    if( options.iframe && options.url) {
+      options.content = this.$iframe.attr("src", options.url);
+    } else {
+      this.$el.addClass('loaded');
+    };
+
     this.$el.find('.modal-content').html(options.content);
     this.$el.addClass('open');
 
+    // apply styles to the modal
     this.transit(settings);
   },
 
   closeModal : function(){
-    this.$el.removeClass('open');
+    this.$el.removeClass('open loaded');
     this.$bg.removeClass('open').hide();
   },
 

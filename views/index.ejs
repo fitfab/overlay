@@ -13,7 +13,7 @@
 
     <!-- The overlay can be setup via data attribute -->
     <a href="#" class="overlayTrigger" data-dialog="openDisclaimer">Disclaimer</a> <a href="#" class="overlayTrigger" data-dialog="openPDP">PDP</a>
-
+    
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -22,7 +22,9 @@
     proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
 
     <!-- The overlay can be setup via data attribute -->
-    <a href="#" class="overlayTrigger" data-dialog="readArticle">Read full article ></a>
+    <a href="#" class="overlayTrigger" data-dialog="readArticle">Read full article</a>
+    <!-- The overlay can be setup via data attribute -->
+    [ <a href="#" class="overlayTrigger" data-dialog="signup">EmailSign Up </a> ]
 
     <!-- For Placement Only (hidden content) -->
     <div class="fpo-only">
@@ -146,6 +148,11 @@
       readArticle : {
         prop : {width: '500'},
         content : $('#one-shoe')
+      },
+      signup : {
+        prop: { width: 500, height: '500'}, 
+        iframe: true,
+        url: 'signup.html'
       }
     };
 
@@ -156,8 +163,8 @@
        * You can also trigger the overlay programatically
        **/
       smartOverlay.open({
-        prop: { width: 700, height: 467, background: 'url(/images/fashion.jpg)'}, 
-        content: '<h1 class="hero">Welcome Summer 2015</h1>'
+        prop: { width: 900, height: 600, background: 'url(/images/fashion3.jpg)'}, 
+        content: '<h1 class="hero">Fashions fade, style is eternal. <span>&mdash; Yves Saint Laurent</span></h1>'
         });
     });
     </script>
