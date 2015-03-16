@@ -69,24 +69,11 @@ SmartOverlay.prototype = {
     this.$el.addClass('open');
 
     // apply styles to the modal
-    this.transit(settings);
+    this.$el.css(settings);
   },
 
   closeModal : function(){
     this.$el.removeClass('open loaded');
     this.$bg.removeClass('open').hide();
-  },
-
-  // using css3 to do transitions
-  transit : function( prop ) {
-    var deferred = $.Deferred();
-    this.$el.css(prop);
-
-    // Listening to transitionend
-    this.$el.on('transitionend webkitTransitionEnd', function(e){
-      deferred.resolve(e);
-    });
-    // return a promise
-    return deferred.promise();
   }
 };

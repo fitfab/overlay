@@ -4,7 +4,7 @@
 
 .textbox{
   font: 14px "fira-sans", Helvetica, Arial, sans-serif;
-  height:50px;
+
   width:100%;
   border-radius:10px;
   border:rgba(0,0,0,.3) 1px solid;
@@ -20,7 +20,7 @@
 }
 
 .button{
-  height:50px;
+
   width:100%;
   border-radius:10px;
   border:rgba(0,0,0,.3) 1px solid;
