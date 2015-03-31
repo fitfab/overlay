@@ -1,7 +1,16 @@
 body {
   font: 14px "fira-sans", Helvetica, Arial, sans-serif;
   background: #fff;
+} 
+
+.wrapper {
+  width: 100%;
+  max-width: 960px;
+  min-width: 320px;
+  margin: 0 auto;
 }
+
+
 .section:after {
     content: "";
     display: table;

@@ -4,6 +4,10 @@
  * Author: Miguel Julio
  */
 
+body.modal-on {
+  overflow: hidden;
+}
+
 /* Transition definitions */
 .transit {
 
@@ -25,23 +29,49 @@
   display: none;
 }
 
+/* wraps the whole overlay */
+.modal-wrapper {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: fixed;
+  z-index: 120;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
 /* Background for the ovelay */
-.opaque {
-  background: #333;
-  opacity: 0;
+.modal-wrapper .opaque {
+  background: #313131;
+  opacity: .7;
   position: fixed;
   top: 0;
-  right: 0;
-  bottom: 0;
   left: 0;
-  opacity: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
 }
-.opaque.open {
+.modal-wrapper .opaque.open {
   opacity: .4;
 }
 
+.modal-wrapper .modal-viewport {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 12;
+  -webkit-overflow-scrolling: touch;
+  overflow: auto;
+  width: 100%;
+  left: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
 /* Modal style */
-.modal {
+.modal-wrapper .modal {
   position: absolute;
   top: 14%;
   right: 1%;
@@ -55,16 +85,16 @@
   overflow: hidden;
   display: none;
 }
-.modal iframe {
+.modal-wrapper .modal iframe {
   display: none;
 }
-.modal.open.loaded iframe {
+.modal-wrapper .modal.open.loaded iframe {
   display: block;
 }
-.modal.open.loaded .loader {
+.modal-wrapper .modal.open.loaded .loader {
   display: none;
 }
-.modal.open {
+.modal-wrapper .modal.open {
   display: block;
 }
 
@@ -111,7 +141,7 @@
 }
 .modal-content {
   position: relative;
-  min-height: 4em;
+  min-height: 50%;
   z-index: 1;
 }
 
@@ -179,7 +209,7 @@ and (max-device-width : 480px) {
   body {
     font-size: 3em;
   }
-  .modal {
+  .modal-wrapper .modal {
     top: 0;
     right: 0;
     left: 0;
@@ -206,7 +236,7 @@ and (max-device-width : 480px) {
 @media only screen
 and (min-width : 200px)
 and (max-width : 870px) {
-    .modal {
+  .modal-wrapper .modal {
     top: 0;
     right: 0;
     left: 0;
