@@ -7,12 +7,18 @@ var SmartOverlay = function(map) {
   this.$bg = $(this.htmlWrapper()).hide().appendTo('body');
   this.$el = $(this.htmlModal());
               
-  // Listen for call to the overlay from a click event
   $win.on('click', function(e){
+    // if an overlay trigger is clicked
     if ( $(e.target).hasClass('overlayTrigger') ){
       var options = $(e.target).data("dialog");
       this.open(map[options]);
-    }
+      return;
+    };
+    // if outside the overlay or close (X) is clicked
+    if( $(e.target).hasClass('modal-close') || $(e.target).hasClass('modal-viewport')){
+      this.$el.trigger('modal:close');
+      return;
+    };
   }.bind(this));
 
   // Listen to the "modal:close" event
@@ -20,25 +26,13 @@ var SmartOverlay = function(map) {
     this.closeModal();
   }.bind(this));
 
-  // X icon triggers "modal:close" event
-  this.$el.on('click', '.modal-close', function(){
-    $(this).trigger('modal:close');
-  });
-
- // clicking gray background triggers 'modal:close' event
-  this.$bg.on('click', function(){
-    $(this).trigger('modal:close');
-  });
-
-  // Listening to the iframe
+  // Listening to the iframe message
   $win.on('message', function(e){
-
     // Iframe is ready
     if(e.originalEvent.data === 'iframe:ready'){
       this.$el.find('.modal').addClass('loaded');
       return;
     };
-
     // Iframe requesting the overlay to be closed
     if(e.originalEvent.data === 'iframe:close'){
       this.$el.trigger('modal:close');
@@ -47,7 +41,6 @@ var SmartOverlay = function(map) {
 
   }.bind(this));
 
-  //this.$el.appendTo('body');
   this.$bg.append(this.$el);
 };
 
@@ -66,7 +59,6 @@ SmartOverlay.prototype = {
 
   open : function( options) {
     var settings = $.extend( {}, this.defaults, options.prop );
-    // set body to overflow hidden
     this.$body.addClass('modal-on');
     // Shows the background
     this.$bg.show().addClass('open');
@@ -79,9 +71,8 @@ SmartOverlay.prototype = {
 
     this.$el.find('.modal-content').html(options.content);
     
-
-    // apply styles to the modal
-    this.$el.find('.modal').css(settings).addClass('open');;
+    // apply custom styles to the modal
+    this.$el.find('.modal').css(settings).addClass('open');
   },
 
   closeModal : function(){
