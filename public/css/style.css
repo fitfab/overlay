@@ -16,7 +16,7 @@ body {
     display: table;
     clear: both;
 }
-h1, h2,h3,h4,h5,h6 { margin-top: 0; color: #FF5700;}
+h1, h2,h3,h4,h5,h6 { margin-top: 0; color: #FF5700; font-weight: 100;}
 a {
   color: #00B7FF;
 }
@@ -46,4 +46,21 @@ iframe {
   border: none;
   min-height: 800px;
   width: 100%;
+}
+
+/* Comment box */
+
+.comment .comment-author {
+  display: inline-block;
+  width: 17%;
+  padding-right: 3%;
+  text-align: right;
+  position: relative;
+}
+.comment .comment-author:after {
+  content: "-";
+  display: block;
+  position: absolute;
+  right: 5px;
+  top: 1px;
 }

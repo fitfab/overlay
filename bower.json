@@ -1,0 +1,25 @@
+{
+  "name": "overlay",
+  "version": "0.0.1",
+  "homepage": "https://github.com/fitfab/overlay",
+  "authors": [
+    "Miguel Julio <fitfab@yahoo.com>"
+  ],
+  "description": "testing react and reflux",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "reflux": "~0.2.9",
+    "react": "~0.13.3",
+    "jquery": "~2.1.4"
+  }
+}

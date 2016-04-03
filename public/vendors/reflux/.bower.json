@@ -1,0 +1,39 @@
+{
+  "name": "reflux",
+  "homepage": "https://github.com/spoike/reflux",
+  "authors": [
+    "Mikael Brassman <mishakun@gmail.com>"
+  ],
+  "description": "A simple library for uni-directional dataflow architecture inspired by ReactJS Flux",
+  "main": "dist/reflux.js",
+  "keywords": [
+    "action",
+    "event",
+    "data",
+    "flux",
+    "reactjs"
+  ],
+  "license": "BSD-3-Clause",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "src",
+    "Gruntfile.js",
+    "package.json",
+    "README.md"
+  ],
+  "dependencies": {},
+  "version": "0.2.9",
+  "_release": "0.2.9",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.2.9",
+    "commit": "4b6b2a336f451355ed18961f353bb36c48a146a9"
+  },
+  "_source": "git://github.com/spoike/reflux.git",
+  "_target": "~0.2.9",
+  "_originalSource": "reflux",
+  "_direct": true
+}
