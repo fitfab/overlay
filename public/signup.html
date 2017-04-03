@@ -20,15 +20,26 @@
 <script type="text/javascript" src="/js/jquery-2.1.3.js"></script>
 <script type="text/javascript">
 	$(function(){
+		/**
+		 * Tells the parent window that the content
+		 * is loaded.
+		 * NOTE: I am delaying this call to emulate
+		 * slow latency
+		 */
 		setTimeout(function(){
 			window.parent.postMessage("iframe:ready", window.location.origin);
-		}, 1000)
+		}, 1000);
+
+		/**
+		 * Tells the parent Window that it can be closed
+		 * after submit.
+		 * @param  {event} e
+		 */
 		$('#signup').on('submit', function(e){
 			e.preventDefault();
-      setTimeout(function(){
-      window.parent.postMessage('iframe:close', window.location.origin);
-      }, 500);
-
+      		setTimeout(function(){
+      			window.parent.postMessage('iframe:close', window.location.origin);
+      		}, 500);
 		})
 	})
 </script>
